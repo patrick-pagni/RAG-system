@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Main Page{% endblock %}
+
+{% block content %}
+<h1>Welcome to the Main Page</h1>
+<p>Select a page to navigate to:</p>
+<ul>
+    <li><a href="{{ url_for('simple') }}">Simple</a></li>
+    <li><a href="{{ url_for('advanced') }}">Advanced</a></li>
+</ul>
+{% endblock %}

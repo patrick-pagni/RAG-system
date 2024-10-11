@@ -1,5 +1,4 @@
 
-from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_core.runnables import RunnablePassthrough
@@ -9,13 +8,9 @@ from utils import format_docs
 
 class SimpleRag:
     
-    def __call__(self, q, data):
-        text_splitter = RecursiveCharacterTextSplitter(chunk_size = 1000, chunk_overlap = 200)
-        splits = text_splitter.split_documents(data)
+    def __call__(self, q, vector_store):
 
-        # Retrieves documents using cosine similarity between question embedding and document embeddings
-        vectorstore = Chroma.from_documents(documents = splits, embedding = OpenAIEmbeddings())
-        retriever = vectorstore.as_retriever()
+        retriever = vector_store.as_retriever()
 
         # PROMPT
         prompt = """

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Simple RAG implementation{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Submit Form</h2>
+    <form method="POST">
+        <input type="text" class="input-box" name="input_text" placeholder="Enter something..." value="{{ input_text }}" />
+        <button class="submit-btn" type="submit">Submit</button>
+    </form>
+
+    {% if script_output %}
+    <div id="result">"{{ script_output }}"</div>
+    {% endif %}
+</div>
+{% endblock %}
